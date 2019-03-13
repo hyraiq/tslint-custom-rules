@@ -5,18 +5,23 @@ export class Rule extends Lint.Rules.AbstractRule {
     static FAILURE_STRING = 'Use of debugger statements is forbidden.';
 
     public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
-        return this.applyWithWalker(new Walk(sourceFile, this.getOptions()));
+        return this.applyWithFunction(sourceFile, walk);
     }
 }
 
-class Walk extends Lint.RuleWalker {
-    protected visitDebuggerStatement(node: ts.DebuggerStatement) {
-        this.addFailureAt(node.getStart(), node.getEnd() - node.getStart(), Rule.FAILURE_STRING, this.fix(node));
-        super.visitDebuggerStatement(node);
+function walk(ctx: Lint.WalkContext<void>) {
+    ts.forEachChild(ctx.sourceFile, recur);
+
+    function recur(node: ts.Node): void {
+        if (!isSourceFile(node)) {
+            return;
+        }
+
+        ctx.addFailureAtNode(node, 'Make a test bitch');
     }
 
-    private fix(node: ts.DebuggerStatement): Lint.Fix {
-        return new Lint.Replacement(node.pos, node.end, '')
-    }
 }
 
+function isSourceFile(node: ts.Node): node is ts.SourceFile {
+    return (node.kind === ts.SyntaxKind.SourceFile);
+}
