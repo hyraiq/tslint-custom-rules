@@ -2,7 +2,7 @@ import * as Lint from 'tslint';
 import * as ts from 'typescript';
 
 export class Rule extends Lint.Rules.AbstractRule {
-    static FAILURE_STRING = 'Use of debugger statements is forbidden.';
+    public static FAILURE_STRING = 'Missing test case';
 
     public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
         return this.applyWithFunction(sourceFile, walk);
@@ -17,9 +17,8 @@ function walk(ctx: Lint.WalkContext<void>) {
             return;
         }
 
-        ctx.addFailureAtNode(node, 'Make a test bitch');
+        ctx.addFailureAtNode(node, Rule.FAILURE_STRING);
     }
-
 }
 
 function isSourceFile(node: ts.Node): node is ts.SourceFile {
