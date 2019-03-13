@@ -1,8 +1,8 @@
 {
   "name": "hyraiq-tslint-custom-rules",
   "version": "0.0.1",
-  "main": "hyraiq-tslint-custom-rules.json",
   "description": "",
+  "main": "hyraiq-tslint-custom-rules.json",
   "scripts": {
     "build": "tsc",
     "test": "jest"
@@ -37,7 +37,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eranshabi/tslint-custom-rules-boilerplate/issues"
+    "url": "https://github.com/hyraiq/tslint-custom-rules/issues"
   },
-  "homepage": "https://github.com/eranshabi/tslint-custom-rules-boilerplate#readme"
+  "homepage": "https://github.com/hyraiq/tslint-custom-rules#readme"
 }
