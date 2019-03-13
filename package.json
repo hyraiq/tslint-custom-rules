@@ -1,6 +1,6 @@
 {
   "name": "hyraiq-tslint-custom-rules",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "hyraiq-tslint-custom-rules.json",
   "scripts": {
@@ -13,9 +13,10 @@
   },
   "devDependencies": {
     "@types/jest": "^23.0.0",
+    "@types/node": "^11.11.3",
     "jest": "^23.1.0",
     "ts-jest": "^22.4.6",
-    "typescript": "^2.9.1"
+    "typescript": "^3.1.1"
   },
   "dependencies": {
     "tslint": "^5.14.0"
