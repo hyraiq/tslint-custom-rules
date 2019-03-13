@@ -1,6 +1,7 @@
 {
   "name": "hyraiq-tslint-custom-rules",
   "version": "0.0.1",
+  "main": "hyraiq-tslint-custom-rules.json",
   "description": "",
   "scripts": {
     "build": "tsc",
