@@ -55,9 +55,11 @@ function walk(ctx: Lint.WalkContext<IRuleOptions>) {
         return;
     }
 
-    const testFile = `${path.join(ctx.options.testBase, basename)}.spec.js`;
-    if (!fs.existsSync(testFile)) {
-        ctx.addFailureAtNode(ctx.sourceFile, Rule.makeErrorString(testFile));
+    const testFile = `${path.join(ctx.options.testBase, basename)}.spec`;
+    const extensions = ['.ts', '.js'];
+
+    if (!extensions.some((extension) => fs.existsSync(`${testFile}${extension}`))) {
+        ctx.addFailureAtNode(ctx.sourceFile, Rule.makeErrorString(`${testFile}.[t|j]s`));
     }
 }
 
